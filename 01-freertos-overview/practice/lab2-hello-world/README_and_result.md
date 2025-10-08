@@ -310,11 +310,26 @@ idf.py monitor | tee output.log
 ## คำถามทบทวน
 
 1. ความแตกต่างระหว่าง `printf()` และ `ESP_LOGI()` คืออะไร?
+```
+printf() แสดงข้อความออกทาง Serial โดยตรง
+ESP_LOGI() แสดงข้อความ Log พร้อมข้อมูลระดับ (level) และ tag
+```
 2. Log level ไหนที่จะแสดงใน default configuration?
+```
+โดย ค่าเริ่มต้น (Default) คือ INFO level หมายความว่า Log ที่มีระดับ INFO, WARN, ERROR, และ NONE จะถูกแสดง แต่ระดับ DEBUG และ VERBOSE จะไม่แสดง
+```
 3. การใช้ `ESP_ERROR_CHECK()` มีประโยชน์อย่างไร?
+```
+ฟังก์ชันนี้ใช้เพื่อตรวจสอบผลลัพธ์ของฟังก์ชันที่ส่งค่ากลับแบบ esp_err_t
+```
 4. คำสั่งใดในการออกจาก Monitor mode?
+```
+Ctrl + ]
+```
 5. การตั้งค่า Log level สำหรับ tag เฉพาะทำอย่างไร?
-
+```
+esp_log_level_set(const char *tag, esp_log_level_t level);
+```
 ## บทสรุป
 
 ในแลปนี้คุณได้เรียนรู้:
