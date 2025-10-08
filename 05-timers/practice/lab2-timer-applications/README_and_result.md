@@ -634,10 +634,27 @@ OFF → SLOW_BLINK → FAST_BLINK → HEARTBEAT → SOS → RAINBOW → (repeat)
 ## 📋 Post-Lab Questions
 
 1. **Watchdog Design**: เหตุใดต้องใช้ separate timer สำหรับ feeding watchdog?
+```
+การใช้ separate timer ทำให้ watchdog ไม่ขึ้นอยู่กับการทำงานของ Task หลัก หาก Task หลักเกิด hang / deadlock → Timer อิสระสามารถ feed watchdog หรือ trigger reset ได้
+```
 2. **Pattern Timing**: อธิบายการเลือก Timer Period สำหรับแต่ละ pattern
+```
+Pattern timing คือช่วงเวลาที่ Task หรือ Event ทำงานซ้ำ
+```
 3. **Sensor Adaptation**: ประโยชน์ของ Adaptive Sampling Rate คืออะไร?
+```
+ลด การใช้พลังงาน เมื่อความเปลี่ยนแปลงช้า ลด CPU load / memory usage เมื่อไม่จำเป็นต้อง sample บ่อย เพิ่ม ประสิทธิภาพระบบ เมื่อข้อมูลเปลี่ยนเร็ว → sample บ่อยขึ้น
+```
 4. **System Health**: metrics ใดบ้างที่ควรติดตามในระบบจริง?
-
+```
+CPU Utilization → ตรวจสอบโหลด Task
+Memory Usage (Heap / Stack) → ป้องกัน overflow / leak
+Task Response Time → ตรวจสอบ real-time constraint
+Queue Status → messages waiting, dropped messages
+Watchdog Events → number of resets
+Error / Exception Logs → track abnormal behavior
+Power / Battery Metrics → สำหรับระบบ portable
+```
 ## 🚀 ความท้าทายเพิ่มเติม
 
 1. **Advanced Patterns**: สร้าง pattern ที่ซับซ้อนมากขึ้น
