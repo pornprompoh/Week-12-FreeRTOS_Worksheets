@@ -1,24 +1,3 @@
-```
-graph TD
-    A[Start] --> B(Initialize: LED = OFF, Button_State = RELEASED);
-    B --> C{Loop Forever};
-    C --> D(Read Button Pin);
-    D --> E{Button == LOW (Pressed)?};
-    E -- No (Released) --> F(Button_State = RELEASED);
-    F --> C;
-    E -- Yes (Pressed) --> G{Button_State == RELEASED?};
-    G -- No (Already Held) --> C;
-    G -- Yes (First Press) --> H(Wait 20ms <br> 'Debounce Delay');
-    H --> I(Read Button Pin Again);
-    I --> J{Still LOW (Pressed)?};
-    J -- No (Noise) --> C;
-    J -- Yes (Real Press) --> K(Toggle LED <br> 'if OFF -> ON, if ON -> OFF');
-    K --> L(Button_State = PRESSED);
-    L --> C;
-```
-
-
-
 # 00. วิวัฒนาการของ Multitasking ในไมโครคอนโทรลเลอร์
 
 ## ภาพรวมหัวข้อ
